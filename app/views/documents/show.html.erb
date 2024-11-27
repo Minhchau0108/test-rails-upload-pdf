@@ -1,0 +1,11 @@
+<!-- app/views/documents/show.html.erb -->
+<h1><%= @document.title %></h1>
+
+<% if @document.file.attached? %>
+  <p>File name: <%= @document.file.filename %></p>
+  <p>File size: <%= @document.file.byte_size %> bytes</p>
+  <p>Content type: <%= @document.file.content_type %></p>
+  <%= link_to "Download File", rails_blob_path(@document.file, disposition: "attachment") %>
+<% else %>
+  <p>No file attached</p>
+<% end %>
